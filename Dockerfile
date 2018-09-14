@@ -6,7 +6,7 @@ ARG VERSION=0.16.0
 
 RUN apt-get update
 RUN apt-get install -y \
-  build-dependencies \
+  # build-dependencies \
   wget \
   ca-certificates
 RUN mkdir -p /tmp/install /tmp/dist
