@@ -10,7 +10,6 @@ RUN apt-get install -y \
   ca-certificates
 RUN mkdir -p /tmp/install
 RUN wget -O /tmp/install/node_exporter.tar.gz https://github.com/prometheus/node_exporter/releases/download/v$VERSION/node_exporter-$VERSION.linux-$ARCH.tar.gz
-RUN apt-get install -y libc6-compat
 RUN cd /tmp/install \
   && tar --strip-components=1 -xzf node_exporter.tar.gz \
   && mv node_exporter /bin/node_exporter
