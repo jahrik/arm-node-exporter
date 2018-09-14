@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-node('ninja') {
+node('arm32v7') {
 
     try {
 
