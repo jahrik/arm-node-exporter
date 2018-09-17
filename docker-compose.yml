@@ -7,7 +7,7 @@ services:
     environment:
       - NODE_ID={{.Node.ID}}
     volumes:
-      - /etc/hostname:/etc/nodename
+      - /etc/hostname:/etc/nodename:ro
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
       - /:/rootfs:ro
