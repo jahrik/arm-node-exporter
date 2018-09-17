@@ -4,7 +4,10 @@ services:
 
   node-exporter:
     image: jahrik/arm-node-exporter:arm32v7
+    environment:
+      - NODE_ID={{.Node.ID}}
     volumes:
+      - /etc/hostname:/etc/nodename
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
       - /:/rootfs:ro

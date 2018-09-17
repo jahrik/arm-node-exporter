@@ -3,6 +3,7 @@ LABEL maintainer "Jahrik <jahrik@gmail.com>"
 # ARG ARCH=arm64
 ARG ARCH=armv7
 ARG VERSION=0.16.0
+ENV NODE_ID=none
 
 RUN apt-get update
 RUN apt-get install -y \
@@ -15,6 +16,12 @@ RUN cd /tmp/install \
   && mv node_exporter /bin/node_exporter
 RUN rm -rf /tmp/install
 
+COPY conf /etc/node-exporter/
+
 EXPOSE     9100
-ENTRYPOINT ["/bin/node_exporter"]
+
+# ENTRYPOINT ["/bin/node_exporter"]
+# CMD ["--path.procfs", "/host/proc", "--path.sysfs", "/host/sys", "--collector.filesystem.ignored-mount-points", "\"^/(sys|proc|dev|host|etc)($|/)\""]
+
+ENTRYPOINT  [ "/etc/node-exporter/docker-entrypoint.sh" ]
 CMD ["--path.procfs", "/host/proc", "--path.sysfs", "/host/sys", "--collector.filesystem.ignored-mount-points", "\"^/(sys|proc|dev|host|etc)($|/)\""]
