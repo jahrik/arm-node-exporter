@@ -17,6 +17,7 @@ RUN cd /tmp/install \
 RUN rm -rf /tmp/install
 
 COPY conf /etc/node-exporter/
+RUN chmod +x /etc/node-exporter/docker-entrypoint.sh
 
 EXPOSE     9100
 
