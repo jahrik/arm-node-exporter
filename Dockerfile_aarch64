@@ -1,7 +1,6 @@
-FROM arm32v7/ubuntu
+FROM arm64v8/ubuntu
 LABEL maintainer "Jahrik <jahrik@gmail.com>"
-# ARG ARCH=arm64
-ARG ARCH=armv7
+ARG ARCH=arm64
 ARG VERSION=0.16.0
 ENV NODE_ID=none
 

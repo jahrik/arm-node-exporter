@@ -1,18 +1,17 @@
-IMAGE = "jahrik/arm-node-exporter"
-TAG = "arm32v7"
+IMAGE = "jahrik/node-exporter"
+TAG := $(shell uname -m)
 STACK = "monitor"
 
 all: build
 
 build:
-	@docker build -t ${IMAGE}:$(TAG) .
-	@docker tag ${IMAGE}:$(TAG) ${IMAGE}:latest
+	@docker build -t ${IMAGE}:$(TAG) -f Dockerfile_${TAG} .
 
 push:
 	@docker push ${IMAGE}:$(TAG)
-	@docker push ${IMAGE}:latest
 
 deploy:
-	@docker stack deploy --resolve-image=never -c docker-compose.yml ${STACK}
+	# @docker stack deploy --resolve-image=never -c docker-compose.yml ${STACK}
+	@docker stack deploy -c docker-compose.yml ${STACK}
 
 .PHONY: all build push deploy
