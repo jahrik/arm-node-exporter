@@ -1,6 +1,6 @@
 FROM ubuntu
 LABEL maintainer "Jahrik <jahrik@gmail.com>"
-ARG ARCH=x86_64
+ARG ARCH=amd64
 ARG VERSION=0.16.0
 ENV NODE_ID=none
 
