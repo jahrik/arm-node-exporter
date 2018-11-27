@@ -18,7 +18,8 @@ services:
           - node.labels.arch == arm32v7
 
   node-exporter-aarch64:
-    image: "jahrik/node-exporter:aarch64"
+    # image: "jahrik/node-exporter:aarch64"
+    image: "jahrik/node-exporter:armv7l"
     environment:
       - NODE_ID={{.Node.ID}}
     volumes:
