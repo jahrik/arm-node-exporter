@@ -18,8 +18,7 @@ services:
           - node.labels.arch == arm32v7
 
   node-exporter-aarch64:
-    # image: "jahrik/node-exporter:aarch64"
-    image: "jahrik/node-exporter:armv7l"
+    image: "jahrik/node-exporter:aarch64"
     environment:
       - NODE_ID={{.Node.ID}}
     volumes:
@@ -31,7 +30,7 @@ services:
       mode: global
       placement:
         constraints:
-          - node.labels.arch == arm32v7
+          - node.labels.arch == aarch64
 
   node-exporter-amd64:
     image: "jahrik/node-exporter:x86_64"
