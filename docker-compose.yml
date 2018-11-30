@@ -6,6 +6,8 @@ services:
     image: "jahrik/node-exporter:armv7l"
     environment:
       - NODE_ID={{.Node.ID}}
+    networks:
+      - monitor
     volumes:
       - /etc/hostname:/etc/nodename:ro
       - /proc:/host/proc:ro
@@ -21,6 +23,8 @@ services:
     image: "jahrik/node-exporter:aarch64"
     environment:
       - NODE_ID={{.Node.ID}}
+    networks:
+      - monitor
     volumes:
       - /etc/hostname:/etc/nodename:ro
       - /proc:/host/proc:ro
@@ -36,6 +40,8 @@ services:
     image: "jahrik/node-exporter:x86_64"
     environment:
       - NODE_ID={{.Node.ID}}
+    networks:
+      - monitor
     volumes:
       - /etc/hostname:/etc/nodename:ro
       - /proc:/host/proc:ro
@@ -46,3 +52,8 @@ services:
       placement:
         constraints:
           - node.labels.arch == x86_64
+
+networks:
+  monitor:
+    driver: overlay
+    external: true
