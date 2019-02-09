@@ -15,6 +15,6 @@ deploy:
 	# "unsupported platform on 1 node"
 	# jahrik/node-exporter:aarch64
 	# @docker stack deploy -c docker-compose.yml ${STACK}
-	@docker stack deploy --resolve-image=never -c docker-compose.yml ${STACK}
+	@docker stack deploy --resolve-image=never --with-registry-auth -c docker-compose.yml ${STACK}
 
 .PHONY: all build push deploy
