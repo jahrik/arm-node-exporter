@@ -24,4 +24,4 @@ EXPOSE     9100
 # CMD ["--path.procfs", "/host/proc", "--path.sysfs", "/host/sys", "--collector.filesystem.ignored-mount-points", "\"^/(sys|proc|dev|host|etc)($|/)\""]
 
 ENTRYPOINT  [ "/etc/node-exporter/docker-entrypoint.sh" ]
-CMD ["--path.procfs", "/host/proc", "--path.sysfs", "/host/sys", "--collector.filesystem.ignored-mount-points", "\"^/(sys|proc|dev|host|etc)($|/)\""]
+CMD ["--path.procfs", "/host/proc", "--path.sysfs", "/host/sys", "--collector.filesystem.ignored-mount-points", "\"^/(sys|proc|dev|host|etc)($|/)\"", "--collector.textfile.directory=/etc/node-exporter/"]
