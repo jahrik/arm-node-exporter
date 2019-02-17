@@ -27,7 +27,7 @@ for (x in labels) {
         throw error
 
       } finally {
-        // Any cleanup operations needed, whether we hit an error or not
+        deleteDir()
       }
     }
   }
@@ -35,18 +35,15 @@ for (x in labels) {
 
 parallel builders
 
-node('master') {
+node('manager') {
 
   try {
     stage('scm') {
-      // Clean workspace
       deleteDir()
-      // Checkout the app at the given commit sha from the webhook
       checkout scm
     }
 
     stage('deploy') {
-      // Docker deploy
       sh "make deploy"
     }
 
@@ -54,7 +51,6 @@ node('master') {
     throw error
 
   } finally {
-    // Any cleanup operations needed, whether we hit an error or not
-
+    deleteDir()
   }
 }
