@@ -1,9 +1,8 @@
-version: '3'
-
+---
 services:
 
-  node-exporter-armv7l:
-    image: "jahrik/node-exporter:armv7l"
+  node-exporter:
+    image: jahrik/arm-node-exporter:latest
     environment:
       - NODE_ID={{.Node.ID}}
     networks:
@@ -15,43 +14,6 @@ services:
       - /:/rootfs:ro
     deploy:
       mode: global
-      placement:
-        constraints:
-          - node.labels.arch == arm32v7
-
-  node-exporter-aarch64:
-    image: "jahrik/node-exporter:aarch64"
-    environment:
-      - NODE_ID={{.Node.ID}}
-    networks:
-      - monitor
-    volumes:
-      - /etc/hostname:/etc/nodename:ro
-      - /proc:/host/proc:ro
-      - /sys:/host/sys:ro
-      - /:/rootfs:ro
-    deploy:
-      mode: global
-      placement:
-        constraints:
-          - node.labels.arch == aarch64
-
-  node-exporter-amd64:
-    image: "jahrik/node-exporter:x86_64"
-    environment:
-      - NODE_ID={{.Node.ID}}
-    networks:
-      - monitor
-    volumes:
-      - /etc/hostname:/etc/nodename:ro
-      - /proc:/host/proc:ro
-      - /sys:/host/sys:ro
-      - /:/rootfs:ro
-    deploy:
-      mode: global
-      placement:
-        constraints:
-          - node.labels.arch == x86_64
 
 networks:
   monitor:
