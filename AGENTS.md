@@ -5,9 +5,9 @@ Multi-arch node_exporter image: pinned `FROM` over official `prom/node-exporter`
 ## Commands
 
 ```bash
-make build                                  # build jahrik/arm-node-exporter:latest
+just build                                  # build jahrik/arm-node-exporter:latest
 docker run -d -p 9100:9100 -v /etc/hostname:/etc/nodename:ro jahrik/arm-node-exporter:latest
-make deploy                                 # swarm stack deploy (stack: monitor)
+just deploy                                 # swarm stack deploy (stack: monitor)
 ```
 
 ## CI

@@ -16,14 +16,14 @@ curl http://localhost:9100/metrics | grep node_meta
 
 ```bash
 docker network create -d overlay monitor   # once
-make deploy                                # global service, stack: monitor
+just deploy                                # global service, stack: monitor
 ```
 
 ## Build
 
 ```bash
-make build
-make push
+just build
+just push
 ```
 
 CI: PR builds + metrics/node_meta check; merge to main pushes multi-arch (amd64/arm64/armv7) to Docker Hub.
